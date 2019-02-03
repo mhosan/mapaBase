@@ -20,46 +20,42 @@ export class MapaComponent implements OnInit {
           '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
           'Imagery © <a href="http://mapbox.com">Mapbox</a>',
           id: 'mapbox.streets'});
-        
         let openmap = L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {
           attribution: 'terms and feedback'
         });
-    
         let osm2 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 20});
-        
         let googleMaps = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
         maxZoom: 20,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         detectRetina: true
         });
-    
         let googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
         maxZoom: 20,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         detectRetina: true
         });
-    
-        miMapa = L.map("map", {
-          // contextmenu: true,
-          // contextmenuWidth: 180,
-          /* contextmenuItems: [{
-            text: "Ver las coordenadas",
+        miMapa = L.map('map', {
+          contextmenu: true,
+          contextmenuWidth: 180,
+          contextmenuItems: [
+          /*{
+            text: 'Ver las coordenadas',
             callback: this.verCoordenadas,
             icon: 'assets/images/coordenadas.png'
-          },{
-            text: "Centrar aqui",
+          },*/ {
+            text: 'Centrar aqui',
             callback: this.centrarMapa,
             icon: 'assets/images/banderita.png'
-          },'-',
+          }, '-',
             {
-            text: "Acercar",
+            text: 'Acercar',
             callback: this.acercar,
             icon: 'assets/images/zoom-in.png'
-          },{
-            text: "Alejar",
+          }, {
+            text: 'Alejar',
             callback: this.alejar,
             icon: 'assets/images/zoom-out.png'
-          }],*/
+          }],
           center: [-34.921136, -57.954712],
           zoom: 13,
           zoomControl: false,
@@ -75,5 +71,22 @@ export class MapaComponent implements OnInit {
           })
         }).addTo(miMapa);*/
         // miMapa.on('click', this.onMapClick)
+  }
+
+  verCoordenadas (e) {
+    // let popupCoordenadas = L.popup();
+    // popupCoordenadas
+    //   .setLatLng(e.latlng)
+    //   .setContent("Coordenadas: " + e.latlng)
+    //   .openOn(miMapa);
+  }
+  centrarMapa (e){
+    miMapa.panTo(e.latlng);
+  }
+  acercar(e){
+    miMapa.zoomIn();
+  }
+  alejar(e){
+    miMapa.zoomOut();
   }
 }
