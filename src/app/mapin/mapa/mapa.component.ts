@@ -37,11 +37,11 @@ export class MapaComponent implements OnInit {
           contextmenu: true,
           contextmenuWidth: 180,
           contextmenuItems: [
-          /*{
+          {
             text: 'Ver las coordenadas',
             callback: this.verCoordenadas,
             icon: 'assets/images/coordenadas.png'
-          },*/ {
+          }, {
             text: 'Centrar aqui',
             callback: this.centrarMapa,
             icon: 'assets/images/banderita.png'
@@ -73,11 +73,11 @@ export class MapaComponent implements OnInit {
   }
 
   verCoordenadas (e) {
-    // let popupCoordenadas = L.popup();
-    // popupCoordenadas
-    //   .setLatLng(e.latlng)
-    //   .setContent("Coordenadas: " + e.latlng)
-    //   .openOn(miMapa);
+    const popupCoordenadas = L.popup();
+    popupCoordenadas
+      .setLatLng(e.latlng)
+      .setContent('Coordenadas: ' + e.latlng)
+      .openOn(miMapa);
   }
   centrarMapa (e) {
     miMapa.panTo(e.latlng);
