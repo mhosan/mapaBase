@@ -1,6 +1,7 @@
 #map {
-    height: 44rem; /*30rem;*/
-    width: 100%;
+    position: absolute;
+    height: 99%; /*30rem;*/
+    width: 99%;
     /* left: 33%;
     position: absolute;
     top: 29% */
